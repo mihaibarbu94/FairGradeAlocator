@@ -7,11 +7,12 @@ public class Project {
     private ArrayList<String> members;
     private String projectName;
     private int noOfMembers;
+    private ArrayList<Vote> votes = new ArrayList<>();
 
     public Project(String projectName, int noOfMembers){
         this.projectName = projectName;
         this.noOfMembers = noOfMembers;
-        members = new ArrayList<String>();
+        members = new ArrayList<>();
     }
 
     public void addMember(String name) {
@@ -28,6 +29,14 @@ public class Project {
 
     public int getNoOfMembers() {
         return noOfMembers;
+    }
+
+    public void addVoteToProject(Vote vote) {
+        votes.add(vote);
+    }
+
+    public ArrayList<Vote> getVotes() {
+        return votes;
     }
 }
 
