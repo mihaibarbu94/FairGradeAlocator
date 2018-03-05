@@ -3,6 +3,7 @@ package com.alocator;
 import java.util.ArrayList;
 
 public class Project {
+
     private ArrayList<String> members;
     private String projectName;
     private int noOfMembers;
@@ -15,6 +16,18 @@ public class Project {
 
     public void addMember(String name) {
         members.add(name);
+    }
+
+    public ArrayList<String> getMembers() {
+        return members;
+    }
+
+    public String getProjectName() {
+        return projectName;
+    }
+
+    public int getNoOfMembers() {
+        return noOfMembers;
     }
 }
 

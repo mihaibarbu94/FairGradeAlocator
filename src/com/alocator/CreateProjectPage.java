@@ -20,9 +20,15 @@ public class CreateProjectPage extends Page {
         enterNumberOfTeamMembers();
         int noOfTeamMembers = Integer.parseInt(read());
 
+        System.out.println();
+
         project = new Project(projectName, noOfTeamMembers);
 
-        enterTeamMemberName(noOfTeamMembers);
+        enterTeamMemberNames(noOfTeamMembers);
+
+        Projects.projects.put(projectName, project);
+
+        System.out.println();
 
         returnToMainMenu();
     }
@@ -41,7 +47,7 @@ public class CreateProjectPage extends Page {
         System.out.print("Enter the number of team members: ");
     }
 
-    private void enterTeamMemberName(int numberOfMembers) {
+    private void enterTeamMemberNames(int numberOfMembers) {
         for(int i = 1; i <= numberOfMembers; ++i) {
             System.out.print("\tEnter the name of team member " + i + ": ");
             String name = read();
