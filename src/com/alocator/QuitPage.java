@@ -43,19 +43,34 @@ public class QuitPage extends Page {
 
             ArrayList<Vote> votes = project.getVotes();
 
+            int votesNumber = votes.size();
+            int vote1Iterator = 1;
             for (Vote vote : votes) {
                 String voter = vote.getVoter();
                 outputStream.print(voter + ",");
+                int size = vote.getVotes().size();
+                int vote2Iterator = 1;
                 for (String key : vote.getVotes().keySet()) {
                     //print key e.g. Asim
                     outputStream.print(key + ",");
                     //print vote e.g 50
-                    outputStream.print(vote.getVotes().get(key) + ",");
+                    boolean isCommaNeeded = checkIfComaNeeded(votesNumber,
+                            vote1Iterator, size,
+                            vote2Iterator);
+                    outputStream.print(vote.getVotes().get(key) +
+                            (isCommaNeeded ? "," : ""));
+                    vote2Iterator++;
                 }
+                vote1Iterator++;
             }
             outputStream.println();
         }
 
         outputStream.close();
     }
+    private boolean checkIfComaNeeded(int votesNumber, int vote1Iterator,
+                                      int size, int vote2Iterator){
+        return !(vote1Iterator == votesNumber && size == vote2Iterator);
+    }
+
 }

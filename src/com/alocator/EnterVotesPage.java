@@ -14,7 +14,7 @@ public class EnterVotesPage extends Page {
 
     @Override
     void createView() {
-        askForProject();
+        askForProjectName();
         displayNumberOfTeamMembers();
         ArrayList<String> teamMembers = project.getMembers();
 
@@ -76,11 +76,11 @@ public class EnterVotesPage extends Page {
 
         if (project == null) {
             System.out.println("ERROR: This project does not exist! \n");
-            askForProject();
+            askForProjectName();
         }
     }
 
-    private void askForProject(){
+    private void askForProjectName(){
         enterProjectName();
         String projectName = read();
         getCreatedProject(projectName);
