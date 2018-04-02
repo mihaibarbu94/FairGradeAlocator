@@ -2,9 +2,12 @@ package com.alocator;
 
 public class AboutPage extends Page {
 
-    public AboutPage(){
+    private Page page;
+
+    public AboutPage(Page page) {
+        this.page = page;
         createView();
-        System.exit(0);
+        returnToMainMenu(page);
     }
 
     void createView() {

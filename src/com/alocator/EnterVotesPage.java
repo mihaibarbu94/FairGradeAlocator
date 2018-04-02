@@ -1,7 +1,6 @@
 package com.alocator;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class EnterVotesPage extends Page {
     Project project;
@@ -29,7 +28,7 @@ public class EnterVotesPage extends Page {
 
         System.out.println();
 
-        returnToMainMenu();
+        returnToMainMenu(page);
 
     }
 
@@ -64,13 +63,6 @@ public class EnterVotesPage extends Page {
                 "members.");
     }
 
-    private String read() {
-        // create a scanner so we can read the command-line input
-        Scanner scanner = new Scanner(System.in);
-        // get their input as a String
-        return scanner.next();
-    }
-
     private void getCreatedProject(String projectName){
         project = Projects.projects.get(projectName);
 
@@ -84,11 +76,5 @@ public class EnterVotesPage extends Page {
         enterProjectName();
         String projectName = read();
         getCreatedProject(projectName);
-    }
-
-    private void returnToMainMenu() {
-        System.out.print("Press any key to return to the main menu: ");
-        read();
-        page.createView();
     }
 }

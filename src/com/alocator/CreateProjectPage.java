@@ -1,7 +1,5 @@
 package com.alocator;
 
-import java.util.Scanner;
-
 public class CreateProjectPage extends Page {
 
     public static final int MAX_MEMBERS = 5;
@@ -27,14 +25,12 @@ public class CreateProjectPage extends Page {
         System.out.println();
 
         project = new Project(projectName, noOfTeamMembers);
-
         enterTeamMemberNames(noOfTeamMembers);
-
         Projects.projects.put(projectName, project);
 
         System.out.println();
 
-        returnToMainMenu();
+        returnToMainMenu(page);
     }
 
     private void askForProjectName() {
@@ -85,12 +81,6 @@ public class CreateProjectPage extends Page {
         askForNoOfTeamMembers();
     }
 
-    private void returnToMainMenu() {
-        System.out.print("Press any key to return to the main menu: ");
-        read();
-        page.createView();
-    }
-
     private void enterProjectName() {
         System.out.print("Enter the project name: ");
     }
@@ -106,12 +96,5 @@ public class CreateProjectPage extends Page {
 //            String name = read();
 //            project.addMember(name);
         }
-    }
-
-    private String read() {
-        // create a scanner so we can read the command-line input
-        Scanner scanner = new Scanner(System.in);
-        // get their input as a String
-        return scanner.next();
     }
 }

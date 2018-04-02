@@ -68,9 +68,9 @@ public class QuitPage extends Page {
 
         outputStream.close();
     }
+
     private boolean checkIfComaNeeded(int votesNumber, int vote1Iterator,
                                       int size, int vote2Iterator){
         return !(vote1Iterator == votesNumber && size == vote2Iterator);
     }
-
 }

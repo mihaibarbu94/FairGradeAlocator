@@ -1,12 +1,6 @@
 package com.alocator;
 
-import java.util.Scanner;
-
 public class WelcomePage extends Page {
-
-    public WelcomePage() {
-
-    }
 
     @Override
     void createView() {
@@ -26,24 +20,15 @@ public class WelcomePage extends Page {
     }
 
     private void process(){
-        String option = readOption();
+        String option = read();
         System.out.println();
         decideNextPage(option);
-    }
-
-    private String readOption() {
-        // create a scanner so we can read the command-line input
-        Scanner scanner = new Scanner(System.in);
-        // get their input as a String
-        String option = scanner.next();
-
-        return option;
     }
 
     private Page decideNextPage(String input) {
         switch (input) {
             case "A":
-                return new AboutPage();
+                return new AboutPage(this);
             case "C":
                 return new CreateProjectPage(this);
             case "V":
