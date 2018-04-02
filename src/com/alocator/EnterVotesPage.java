@@ -32,7 +32,8 @@ public class EnterVotesPage extends Page {
 
     }
 
-    private void voteForRemainingMembers(ArrayList<String> teamMembers, String member ){
+    private void voteForRemainingMembers(ArrayList<String> teamMembers,
+                                         String member ){
         int totalVotes = 100;
         Vote vote = new Vote(member);
         for (String remainingMember : teamMembers) {
@@ -46,11 +47,13 @@ public class EnterVotesPage extends Page {
             totalVotes -= mark;
             vote.addVote(remainingMember, mark);
         }
+
         if (totalVotes != 0) {
             vote.deleteVotes();
             System.out.println("ERROR: All votes should add up to 100!");
             voteForRemainingMembers(teamMembers, member);
         }
+
         project.addVoteToProject(vote);
     }
 
@@ -64,7 +67,7 @@ public class EnterVotesPage extends Page {
     }
 
     private void getCreatedProject(String projectName){
-        project = Projects.projects.get(projectName);
+        project = ProjectList.projects.get(projectName);
 
         if (project == null) {
             System.out.println("ERROR: This project does not exist! \n");

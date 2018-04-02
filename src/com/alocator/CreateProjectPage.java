@@ -26,7 +26,7 @@ public class CreateProjectPage extends Page {
 
         project = new Project(projectName, noOfTeamMembers);
         enterTeamMemberNames(noOfTeamMembers);
-        Projects.projects.put(projectName, project);
+        ProjectList.projects.put(projectName, project);
 
         System.out.println();
 

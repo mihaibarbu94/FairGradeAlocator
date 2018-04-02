@@ -2,7 +2,7 @@ package com.alocator;
 
 import java.util.HashMap;
 
-public class Projects {
+public class ProjectList {
 
     public static HashMap<String, Project> projects = new HashMap<>();
 }

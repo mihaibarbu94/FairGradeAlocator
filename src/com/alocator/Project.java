@@ -15,6 +15,14 @@ public class Project {
         members = new ArrayList<>();
     }
 
+    public Project(String projectName,
+                   int noOfMembers,
+                   ArrayList<String> members){
+        this.projectName = projectName;
+        this.noOfMembers = noOfMembers;
+        this.members     = members;
+    }
+
     public void addMember(String name) {
         members.add(name);
     }

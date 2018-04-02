@@ -16,7 +16,7 @@ public class QuitPage extends Page {
     void createView() {}
 
     private void storeDataIntoTextFile(){
-        ArrayList<Project> projects = new ArrayList<>(Projects.projects.values());
+        ArrayList<Project> projects = new ArrayList<>(ProjectList.projects.values());
 
         PrintWriter outputStream = null;
         try
