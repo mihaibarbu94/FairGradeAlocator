@@ -18,7 +18,6 @@ public class ShowProjectPage extends Page {
     @Override
     void createView() {
         askForProject();
-        findProject();
         displayNoOfTeamMembers();
         displayResultsBasedOnVotes();
         System.out.println();
@@ -29,6 +28,12 @@ public class ShowProjectPage extends Page {
         enterProjectName();
         projectName = page.read();
         System.out.println();
+
+        project =  ProjectList.projects.get(projectName);
+        if (project == null) {
+            System.out.println("ERROR: This project does not exist!");
+            askForProject();
+        }
     }
 
     private void displayResultsBasedOnVotes() {
@@ -59,12 +64,5 @@ public class ShowProjectPage extends Page {
 
     private void enterProjectName() {
         System.out.print("Enter the project name: ");
-    }
-
-    private void findProject() {
-        project =  ProjectList.projects.get(projectName);
-        if (project == null) {
-            System.out.println("The project was not found!");
-        }
     }
 }

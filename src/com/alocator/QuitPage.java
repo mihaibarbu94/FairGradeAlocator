@@ -18,16 +18,14 @@ public class QuitPage extends Page {
     private void storeDataIntoTextFile(){
         ArrayList<Project> projects = new ArrayList<>(ProjectList.projects.values());
 
-        PrintWriter outputStream = null;
-        try
-        {
+        PrintWriter outputStream;
+        try {
             outputStream = new PrintWriter(new FileOutputStream("store.txt"));
+        } catch(FileNotFoundException e) {
+            System.out.println("Error opening, creating or writing to the " +
+                               "file store.txt");
+            return;
         }
-        catch(FileNotFoundException e)
-        {
-            System.out.println("Error opening or creating the file store.txt.");
-        }
-
 
         for (Project project : projects){
             String projectName = project.getProjectName();

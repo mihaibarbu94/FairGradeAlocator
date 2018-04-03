@@ -2,8 +2,7 @@ package com.alocator;
 
 public class CreateProjectPage extends Page {
 
-    public static final int MAX_MEMBERS = 5;
-    public static final int MIN_MEMBERS = 3;
+    public static final int NO_MEMBERS = 3;
     public static final int MAX_NAME_LENGTH = 30;
     public static final int MIN_NAME_LENGTH  = 1;
 
@@ -55,7 +54,7 @@ public class CreateProjectPage extends Page {
             handleNoOfTeamMembersError();
         }
 
-        if (MIN_MEMBERS > noOfTeamMembers || noOfTeamMembers > MAX_MEMBERS) {
+        if (NO_MEMBERS != noOfTeamMembers) {
             handleNoOfTeamMembersError();
         }
     }
@@ -77,7 +76,7 @@ public class CreateProjectPage extends Page {
     }
 
     private void handleNoOfTeamMembersError() {
-        System.out.println("Project can have between 3 and 5 members, try again");
+        System.out.println("Project can have 3 members, try again");
         askForNoOfTeamMembers();
     }
 
@@ -91,10 +90,7 @@ public class CreateProjectPage extends Page {
 
     private void enterTeamMemberNames(int numberOfMembers) {
         for(int i = 1; i <= numberOfMembers; ++i) {
-//            System.out.print("\tEnter the name of team member " + i + ": ");
             askForMembersName(i);
-//            String name = read();
-//            project.addMember(name);
         }
     }
 }
