@@ -1,10 +1,14 @@
 package com.alocator;
 
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+
 public class ShowProjectPage extends Page {
 
     Page page;
     String projectName;
     Project project;
+    private ArrayList<Double> shareOfScores = new ArrayList<>();
 
     public ShowProjectPage(Page page) {
         this.page = page;
@@ -13,15 +17,11 @@ public class ShowProjectPage extends Page {
 
     @Override
     void createView() {
-
         askForProject();
         findProject();
-
         displayNoOfTeamMembers();
         displayResultsBasedOnVotes();
-
         System.out.println();
-
         returnToMainMenu(page);
     }
 
@@ -34,6 +34,21 @@ public class ShowProjectPage extends Page {
     private void displayResultsBasedOnVotes() {
         System.out.println("The point allocation based on votes is:");
         System.out.println();
+
+        GradeAllocator allocator = new GradeAllocator(project);
+        shareOfScores = allocator.calculateShareOfScore();
+        if (shareOfScores.isEmpty()){
+            System.out.println("Error showing up the scores!");
+            return;
+        }
+        ArrayList<String> members = project.getMembers();
+
+        int memberIndex = 0;
+        DecimalFormat df  = new DecimalFormat("0.00");
+        for(String member : members){
+            System.out.println(member + ": " +
+                               df.format(shareOfScores.get(memberIndex++)));
+        }
     }
 
     private void displayNoOfTeamMembers() {
@@ -49,7 +64,7 @@ public class ShowProjectPage extends Page {
     private void findProject() {
         project =  ProjectList.projects.get(projectName);
         if (project == null) {
-            System.out.println("ERROROROROROROR");
+            System.out.println("The project was not found!");
         }
     }
 }

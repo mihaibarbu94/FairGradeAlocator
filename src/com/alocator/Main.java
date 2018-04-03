@@ -2,12 +2,13 @@ package com.alocator;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws FileNotFoundException, ParseException {
         readDataFromFile();
         WelcomePage welcomePage = new WelcomePage();
         welcomePage.createView();
@@ -16,11 +17,12 @@ public class Main {
 
     private static void readDataFromFile() throws FileNotFoundException {
         Scanner scanner = new Scanner(new File("store.txt"));
-        scanner.useDelimiter(",");
+        // we want to match exactly one newline or comma at a time
+        scanner.useDelimiter(",|\r?\n|\r");
         while(scanner.hasNext()){
             String projectName = scanner.next();
 
-            //check data
+            //TODO check data
             int noOfMembers = Integer.parseInt(scanner.next());
 
             ArrayList<String> members = new ArrayList<>();
@@ -41,6 +43,8 @@ public class Main {
                 project.addVoteToProject(vote);
             }
             ProjectList.projects.put(projectName, project);
+
+
         }
         scanner.close();
     }

@@ -14,7 +14,8 @@ public abstract class Page {
     }
 
     protected void returnToMainMenu(Page page) {
-        System.out.print("Press any key to return to the main menu: ");
+        System.out.print("Press any key followed by <Enter> to " +
+                         "return to the main menu:");
         read();
         page.createView();
     }
