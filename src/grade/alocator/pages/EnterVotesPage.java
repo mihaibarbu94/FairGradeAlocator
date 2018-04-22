@@ -136,5 +136,20 @@ public class EnterVotesPage extends Page {
         enterProjectName();
         String projectName = read();
         getCreatedProject(projectName);
+        checkIfAlreadyVoted();
+    }
+
+    /**
+     * Checks if it was voted for this project. If so the user is directed to
+     * main menu.
+     */
+    private void checkIfAlreadyVoted() {
+        if (!project.getVotes().isEmpty()){
+            System.out.println();
+            System.out.println("There are already votes for this project! " +
+                    "Taking you back to main menu.");
+            System.out.println();
+            returnToMainMenu(page);
+        }
     }
 }
