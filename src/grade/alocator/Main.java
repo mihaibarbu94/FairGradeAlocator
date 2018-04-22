@@ -1,6 +1,6 @@
-package com.alocator;
+package grade.alocator;
 
-import com.alocator.Pages.WelcomePage;
+import grade.alocator.pages.WelcomePage;
 
 public class Main {
 

@@ -1,8 +1,8 @@
-package com.alocator.Pages;
+package grade.alocator.pages;
 
-import com.alocator.Project;
-import com.alocator.ProjectList;
-import com.alocator.Vote;
+import grade.alocator.Project;
+import grade.alocator.ProjectList;
+import grade.alocator.Vote;
 
 import java.util.ArrayList;
 

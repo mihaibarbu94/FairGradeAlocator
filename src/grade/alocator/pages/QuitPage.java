@@ -1,6 +1,6 @@
-package com.alocator.Pages;
+package grade.alocator.pages;
 
-import com.alocator.WriterToFile;
+import grade.alocator.WriterToFile;
 
 public class QuitPage extends Page {
 

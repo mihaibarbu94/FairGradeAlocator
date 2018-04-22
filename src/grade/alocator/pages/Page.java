@@ -1,4 +1,4 @@
-package com.alocator.Pages;
+package grade.alocator.pages;
 
 import java.util.Scanner;
 

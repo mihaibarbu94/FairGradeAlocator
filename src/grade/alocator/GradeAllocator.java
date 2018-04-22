@@ -1,4 +1,4 @@
-package com.alocator;
+package grade.alocator;
 
 import java.util.ArrayList;
 import java.util.HashMap;

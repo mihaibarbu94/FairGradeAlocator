@@ -1,4 +1,4 @@
-package com.alocator;
+package grade.alocator;
 
 import java.io.File;
 import java.io.FileNotFoundException;

@@ -1,8 +1,8 @@
-package com.alocator.Pages;
+package grade.alocator.pages;
 
-import com.alocator.GradeAllocator;
-import com.alocator.Project;
-import com.alocator.ProjectList;
+import grade.alocator.GradeAllocator;
+import grade.alocator.Project;
+import grade.alocator.ProjectList;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
