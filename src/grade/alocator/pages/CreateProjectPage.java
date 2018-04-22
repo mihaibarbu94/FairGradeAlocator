@@ -111,6 +111,7 @@ public class CreateProjectPage extends Page {
                     "characters and be between 1 and 30 characters, or the " +
                     "name was already introduced. Try again!");
                 askForMembersName(i);
+                return;
         }
 
         project.addMember(memberName);
