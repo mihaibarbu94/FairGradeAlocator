@@ -1,9 +1,12 @@
-package com.alocator;
+package com.alocator.Pages;
 
 public class WelcomePage extends Page {
 
+    /**
+     *  Creates the view of the page by displaying text in the command line.
+     */
     @Override
-    void createView() {
+    public void createView() {
         System.out.println("Welcome to Split-it");
         System.out.println();
 
@@ -19,12 +22,20 @@ public class WelcomePage extends Page {
         process();
     }
 
+    /**
+     * Process the option given and decides next page.
+     */
     private void process(){
         String option = read();
         System.out.println();
         decideNextPage(option);
     }
 
+    /**
+     * Decides the next page in the control flow of the program.
+     * @param input The choice of the user.
+     * @return The page that the user wishes to access.
+     */
     private Page decideNextPage(String input) {
         switch (input) {
             case "A":

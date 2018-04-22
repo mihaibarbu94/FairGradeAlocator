@@ -1,20 +1,31 @@
-package com.alocator;
+package com.alocator.Pages;
+
+import com.alocator.GradeAllocator;
+import com.alocator.Project;
+import com.alocator.ProjectList;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class ShowProjectPage extends Page {
 
-    Page page;
-    String projectName;
-    Project project;
+    private Page page;
+    private String projectName;
+    private Project project;
     private ArrayList<Double> shareOfScores = new ArrayList<>();
 
+    /**
+     * Creates the Show Project Page object.
+     * @param page The main menu page.
+     */
     public ShowProjectPage(Page page) {
         this.page = page;
         createView();
     }
 
+    /**
+     *  Creates the view of the page by displaying text in the command line.
+     */
     @Override
     void createView() {
         askForProject();

@@ -5,17 +5,12 @@ import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-public class QuitPage extends Page {
+public class WriterToFile {
 
-    public QuitPage() {
-        storeDataIntoTextFile();
-        System.exit(0);
-    }
-
-    @Override
-    void createView() {}
-
-    private void storeDataIntoTextFile(){
+    /**
+     * Store data to a text file.
+     */
+    public static void storeDataToTextFile() {
         ArrayList<Project> projects = new ArrayList<>(ProjectList.projects.values());
 
         PrintWriter outputStream;
@@ -23,7 +18,7 @@ public class QuitPage extends Page {
             outputStream = new PrintWriter(new FileOutputStream("store.txt"));
         } catch(FileNotFoundException e) {
             System.out.println("Error opening, creating or writing to the " +
-                               "file store.txt");
+                    "file store.txt");
             return;
         }
 
@@ -67,7 +62,7 @@ public class QuitPage extends Page {
         outputStream.close();
     }
 
-    private boolean checkIfComaNeeded(int votesNumber, int vote1Iterator,
+    private static boolean checkIfComaNeeded(int votesNumber, int vote1Iterator,
                                       int size, int vote2Iterator){
         return !(vote1Iterator == votesNumber && size == vote2Iterator);
     }
