@@ -45,7 +45,7 @@ public class EnterVotesPage extends Page {
 
     /**
      * The 'member' of the project votes for the remaining 'teamMembers'.
-     * If the total votes is less than 100 the user is asked again to eneter
+     * If the total votes is less than 100 the user is asked again to enter
      * the votes.
      * @param teamMembers The list of team members.
      * @param member The members who votes.
@@ -60,10 +60,7 @@ public class EnterVotesPage extends Page {
             }
             System.out.print("\tEnter " + member + "'s points for " +
                     remainingMember + ": " );
-
             int mark = askForMark();
-
-            //int mark = Integer.parseInt(read());
             totalVotes -= mark;
             vote.addVote(remainingMember, mark);
         }
@@ -95,7 +92,7 @@ public class EnterVotesPage extends Page {
     }
 
     /**
-     * Handles case when user enter a wrong value for the mark and ask the
+     * Handles case when user enters a wrong value for the mark and asks the
      * user to enter the mark again.
      * @return The mark of the vote.
      */

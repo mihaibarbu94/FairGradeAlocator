@@ -1,9 +1,13 @@
 package com.alocator.Pages;
 
+/**
+ * The type About page.
+ */
 public class AboutPage extends Page {
 
     /**
      * Creates the About Page object.
+     *
      * @param page The main menu page.
      */
     public AboutPage(Page page) {

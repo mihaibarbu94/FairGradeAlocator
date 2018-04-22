@@ -52,12 +52,25 @@ public class CreateProjectPage extends Page {
         projectName = read();
         int nameLength = projectName.length();
         //https://stackoverflow.com/questions/11241690/regex-for-checking-if-a-string-is-strictly-alphanumeric/11243952
-        if (MIN_NAME_LENGTH > nameLength || nameLength > MAX_NAME_LENGTH ||
-            !projectName.matches("^[a-zA-Z0-9]*$")) {
-            System.out.println("A name must contain only alphanumeric " +
-                    "characters and be between 1 and 30 characters, try again");
-            askForProjectName();
+        if (MIN_NAME_LENGTH > nameLength ||
+            nameLength > MAX_NAME_LENGTH ||
+            !projectName.matches("^[a-zA-Z0-9]*$") ||
+            isAnExistentProjectName(projectName)) {
+                System.out.println("A name must contain only alphanumeric " +
+                        "characters and be between 1 and 30 characters, or the " +
+                        "name was already introduced. Try again!");
+                askForProjectName();
         }
+    }
+
+    /**
+     * Return true if the project name is already registered (to avoid
+     * confusion)
+     * @param projectName The name of the member
+     * @return True if project name already introduced false otherwise.
+     */
+    private boolean isAnExistentProjectName(String projectName) {
+        return ProjectList.projects.containsKey(projectName);
     }
 
     /**
@@ -86,18 +99,30 @@ public class CreateProjectPage extends Page {
      */
     private void askForMembersName(int i) {
         System.out.print("\tEnter the name of team member " + i + ": ");
-        String name = read();
+        String memberName = read();
 
-        int nameLength = name.length();
+        int nameLength = memberName.length();
         //https://stackoverflow.com/questions/11241690/regex-for-checking-if-a-string-is-strictly-alphanumeric/11243952
-        if (MIN_NAME_LENGTH > nameLength || nameLength > MAX_NAME_LENGTH ||
-                !name.matches("^[a-zA-Z0-9]*$")) {
-            System.out.println("A name must contain only alphanumeric " +
-                    "characters and be between 1 and 30 characters, try again");
-            askForMembersName(i);
+        if (MIN_NAME_LENGTH > nameLength ||
+            nameLength > MAX_NAME_LENGTH ||
+            !memberName.matches("^[a-zA-Z0-9]*$") ||
+            isAnExistentMember(memberName)) {
+                System.out.println("A name must contain only alphanumeric " +
+                    "characters and be between 1 and 30 characters, or the " +
+                    "name was already introduced. Try again!");
+                askForMembersName(i);
         }
 
-        project.addMember(name);
+        project.addMember(memberName);
+    }
+
+    /**
+     * Return true if the member name is already registered (to avoid confusion)
+     * @param memberName The name of the member
+     * @return True if member already introduced false otherwise.
+     */
+    private boolean isAnExistentMember(String memberName) {
+        return project.getMembers().contains(memberName);
     }
 
     /**

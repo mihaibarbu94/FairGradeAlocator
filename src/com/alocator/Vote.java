@@ -21,6 +21,7 @@ public class Vote {
      * @param vote The number which represents the vote.
      */
     public void addVote(String voted, int vote) {
+        assert vote > 0;
         votes.put(voted, vote);
     }
 
