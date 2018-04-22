@@ -35,7 +35,16 @@ public class ShowProjectPage extends Page {
         returnToMainMenu(page);
     }
 
+    /**
+     * Asks the user for a project to search. If no projects are available
+     * the user is taken to main menu.
+     */
     private void askForProject() {
+        if (ProjectList.projects.isEmpty()) {
+            System.out.println("There are not projects available! Taking you " +
+                    "back to main menu!");
+            returnToMainMenu(page);
+        }
         enterProjectName();
         projectName = page.read();
         System.out.println();
@@ -47,6 +56,10 @@ public class ShowProjectPage extends Page {
         }
     }
 
+    /**
+     * Displays the results based on the votes. If the votes do not add up to
+     * 1 a message will be prompted to announce this.
+     */
     private void displayResultsBasedOnVotes() {
         System.out.println("The point allocation based on votes is:");
         System.out.println();
@@ -61,18 +74,32 @@ public class ShowProjectPage extends Page {
 
         int memberIndex = 0;
         DecimalFormat df  = new DecimalFormat("0.00");
+        double totalScore = 0;
         for(String member : members){
+            totalScore += shareOfScores.get(memberIndex);
             System.out.println(member + ": " +
                                df.format(shareOfScores.get(memberIndex++)));
         }
+
+        if (totalScore != 1) {
+            System.out.println("The scores do not add up to 1! They add " +
+                    "up to: " + totalScore + " There is a big" +
+                    " discrepancy in the votes!");
+        }
     }
 
+    /**
+     * Displays the number of team members.
+     */
     private void displayNoOfTeamMembers() {
         int noOfTeamMembers = project.getNoOfMembers();
         System.out.println("There are " + noOfTeamMembers + " team members.");
         System.out.println();
     }
 
+    /**
+     * Asks the user to enter the project name.
+     */
     private void enterProjectName() {
         System.out.print("Enter the project name: ");
     }
